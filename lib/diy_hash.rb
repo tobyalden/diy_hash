@@ -6,10 +6,17 @@ class DiyHash
   end
 
   define_method(:store) do |key, value|
-    @key_array.push(key)
-    @value_array.push(value)
-    print @key_array
-    print @value_array
+    is_replacing = false
+    @key_array.each_index() do |index|
+      if (key == @key_array[index])
+        @value_array[index] = value
+        is_replacing = true
+      end
+    end
+    if (!is_replacing)
+      @key_array.push(key)
+      @value_array.push(value)
+    end
   end
 
   define_method(:fetch) do |key|

@@ -25,6 +25,15 @@ describe('DiyHash') do
     end
   end
 
+  describe('#store') do
+    it('overrides value if there are key duplicates') do
+      test_hash = DiyHash.new()
+      test_hash.store("kitten", "cute")
+      test_hash.store("kitten", "adorbz")
+      expect(test_hash.fetch("kitten")).to(eq("adorbz"))
+    end
+  end
+
   describe('#merge') do
     it('merges two hashes') do
       test_hash1 = DiyHash.new()
