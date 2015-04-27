@@ -18,6 +18,7 @@ class DiyHash
         return @value_array[index]
       end
     end
+    return nil
   end
 
 end

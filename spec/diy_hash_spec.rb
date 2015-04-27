@@ -19,5 +19,10 @@ describe('DiyHash') do
       expect(test_hash.fetch("kitten")).to(eq("cute"))
     end
 
+    it('returns nil if no value exists for the given key') do
+      test_hash = DiyHash.new()
+      expect(test_hash.fetch("kitten")).to(eq(nil))
+    end
+
   end
 end
