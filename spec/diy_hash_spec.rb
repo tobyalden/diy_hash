@@ -23,6 +23,20 @@ describe('DiyHash') do
       test_hash = DiyHash.new()
       expect(test_hash.fetch("kitten")).to(eq(nil))
     end
+  end
 
+  describe('#merge') do
+    it('merges two hashes') do
+      test_hash1 = DiyHash.new()
+      test_hash1.store("kitten", "cute")
+      test_hash1.store("pigeon", "filthy")
+      test_hash2 = DiyHash.new()
+      test_hash2.store("blue", "color")
+      test_hash2.store("books", "reading")
+      test_hash2.store("movies", "watching")
+      test_hash1.merge(test_hash2)
+      expect(test_hash1.fetch("kitten")).to(eq("cute"))
+      expect(test_hash1.fetch("books")).to(eq("reading"))
+    end
   end
 end

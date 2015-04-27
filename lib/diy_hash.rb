@@ -21,4 +21,17 @@ class DiyHash
     return nil
   end
 
+  define_method(:merge) do |hash_to_merge|
+    @key_array.concat(hash_to_merge.get_keys())
+    @value_array.concat(hash_to_merge.get_values())
+  end
+
+  define_method(:get_keys) do
+    return @key_array
+  end
+
+  define_method(:get_values) do
+    return @value_array
+  end
+
 end
