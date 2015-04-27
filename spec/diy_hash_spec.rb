@@ -47,5 +47,19 @@ describe('DiyHash') do
       expect(test_hash1.fetch("kitten")).to(eq("cute"))
       expect(test_hash1.fetch("books")).to(eq("reading"))
     end
+
+    it('merges two hashes. if duplicate keys are found, the value of the original hash is overwritten with the value of the hash being merged') do
+      test_hash1 = DiyHash.new()
+      test_hash1.store("kitten", "cute")
+      test_hash1.store("red", "scarf")
+      test_hash1.store("pigeon", "filthy")
+      test_hash2 = DiyHash.new()
+      test_hash2.store("blue", "color")
+      test_hash2.store("kitten", "sleeping")
+      test_hash2.store("pigeon", "flying")
+      test_hash1.merge(test_hash2)
+      expect(test_hash1.fetch("kitten")).to(eq("sleeping"))
+      expect(test_hash1.fetch("pigeon")).to(eq("flying"))
+    end
   end
 end

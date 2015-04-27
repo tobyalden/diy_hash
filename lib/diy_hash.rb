@@ -29,8 +29,9 @@ class DiyHash
   end
 
   define_method(:merge) do |hash_to_merge|
-    @key_array.concat(hash_to_merge.get_keys())
-    @value_array.concat(hash_to_merge.get_values())
+    hash_to_merge.get_keys().each() do |key|
+      store(key, hash_to_merge.fetch(key))
+    end
   end
 
   define_method(:get_keys) do
